@@ -10,8 +10,8 @@ import {
   Geographies,
   Geography
 } from "react-simple-maps";
-import { getAllData, CountryData } from '../utilities/requests';
-import { rounded, changeCountryName } from '../utilities/utils'
+import { getAllData } from '../utilities/requests';
+import { CountryData, changeCountryName } from '../utilities/utils'
 
 
 const geoUrl =
@@ -33,6 +33,7 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
       };
 
       const { NAME } = geo.properties;
+      console.log(NAME);
       const name = changeCountryName(NAME.toLowerCase());
       const countryData: Record<string, number> = data[name];
 

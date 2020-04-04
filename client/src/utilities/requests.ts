@@ -54,14 +54,3 @@ export const getCountryData = async (country: string,  yday_status: boolean = fa
     }
 };
 
-export enum CountryData {
-    TOTAL_CASES = "total_cases",
-    NEW_CASES = "new_cases",
-    TOTAL_DEATHS = "total_deaths", 
-    NEW_DEATHS = "new_deaths",
-    TOTAL_RECOVERED = "total_recovered",
-    ACTIVE_CASES = "active_cases",
-    SERIOUS_CRITICAL = "serious_critical", 
-    TOTAL_PER_MIL = "total_per_million",
-    DEATHS_PER_MIL = "deaths_per_million"
-};

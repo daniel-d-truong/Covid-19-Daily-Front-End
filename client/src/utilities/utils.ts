@@ -1,10 +1,17 @@
 const countryNames: Record<string, string> = {
-    "united states of america": "usa"
+    "united states of america": "usa",
+    "dem. rep. congo": "drc",
+    "central african rep.": "car",
+    "côte d'ivoire": "ivory coast",
+    "falkland is.": "falkland islands",
+    "united kingdom": "uk",
+    "n. cyprus": "cyprus",
+    "dominican rep.": "dominican republic"
 };
 
 export const changeCountryName = (country: string) => {
     return country in countryNames ? countryNames[country] : country;
-}
+};
 
 export const rounded = (num: number) => {
     console.log(num);
@@ -15,4 +22,16 @@ export const rounded = (num: number) => {
     } else {
       return Math.round(num / 100) / 10 + "K";
     }
+};
+
+export enum CountryData {
+    TOTAL_CASES = "total_cases",
+    NEW_CASES = "new_cases",
+    TOTAL_DEATHS = "total_deaths", 
+    NEW_DEATHS = "new_deaths",
+    TOTAL_RECOVERED = "total_recovered",
+    ACTIVE_CASES = "active_cases",
+    SERIOUS_CRITICAL = "serious_critical", 
+    TOTAL_PER_MIL = "total_per_million",
+    DEATHS_PER_MIL = "deaths_per_million"
 };
