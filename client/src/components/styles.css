@@ -33,7 +33,9 @@ svg {
     height: 60vh;
     vertical-align: text-top;
     position: relative;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .react-map {

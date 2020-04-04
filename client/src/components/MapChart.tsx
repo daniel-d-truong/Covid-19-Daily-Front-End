@@ -10,19 +10,22 @@ import {
   Geographies,
   Geography
 } from "react-simple-maps";
-import { getAllData } from '../utilities/requests';
+import { MapChartProps } from '../constants/PropConstants'
 import { CountryData, changeCountryName } from '../utilities/utils'
+import { getAllData } from '../utilities/requests';
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<string>>} ) => {
-  const setTooltipContent = obj["setTooltipContent"]
-  let data: string | string | any = {};
+const MapChart: React.FC<MapChartProps> = (props) => {
   
+  let data: string | any | any = {};
+
   useEffect(() => {    // eslint-disable-next-line
-    getAllData().then(fetchedData => {data = fetchedData});
-    console.log(data);
+    getAllData().then(fetchedData => { 
+      props.setWorldData(fetchedData);
+      data = fetchedData;
+    });
   });
 
   const setTooltip = (geo: any) => {
@@ -33,11 +36,12 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
 
       const { NAME } = geo.properties;
       // console.log(NAME);
-      const name = changeCountryName(NAME.toLowerCase());
+      const name = changeCountryName(NAME);
       const countryData: Record<string, number> = data[name];
 
       let content = `<h2>${NAME}</h2><br>${data==={} ? "still loading..." : formatData(countryData)}`
-      setTooltipContent(`${content}`);
+      props.setTooltipContent(`${content}`);
+      props.setCountry(NAME);
   };
 
   const createCard = (geo: any) => {
@@ -57,7 +61,7 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
                   geography={geo}
                   onMouseEnter={() => setTooltip(geo)}
                   onMouseLeave={() => {
-                    setTooltipContent("");
+                    props.setTooltipContent("");
                   }}
                   onClick={() => createCard(geo)}
                   stroke="#EAEAEC"

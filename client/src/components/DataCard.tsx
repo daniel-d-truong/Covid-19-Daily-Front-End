@@ -5,7 +5,8 @@ import { DataCardStyle } from '../constants/StyleConstants';
 const DataCard: React.FunctionComponent<DataCardProps> = (props) => {
     return (
         <div className="card" style={{...DataCardStyle, ...props.style}}>
-            <h1>Card</h1>
+            <h2>{props.countryName}</h2>
+            <p>{props.countryData}</p>
         </div>
     )
 };

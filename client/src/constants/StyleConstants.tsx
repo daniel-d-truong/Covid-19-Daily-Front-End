@@ -1,12 +1,15 @@
 
 export const DataCardValues: Record<string, number> = {
-    width: 250,
+    width: 350,
     zIndex: 9
 }
 
 export const DataCardStyle: React.CSSProperties = {
     backgroundColor: "#CCCCCC",
-    width: `${DataCardValues.width}px`,
     height: `90%`,
+    padding: '2px',
+    textAlign: "center",
+    verticalAlign: "middle",
+    width: `${DataCardValues.width}px`,
     zIndex: DataCardValues.zIndex
 };

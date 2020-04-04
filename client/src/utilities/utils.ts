@@ -12,6 +12,7 @@ const countryNames: Record<string, string> = {
 };
 
 export const changeCountryName = (country: string) => {
+    country = country.toLowerCase();
     return country in countryNames ? countryNames[country] : country;
 };
 
@@ -38,3 +39,15 @@ export enum CountryData {
     TOTAL_PER_MIL = "total_per_million",
     DEATHS_PER_MIL = "deaths_per_million"
 };
+
+export type CovidDataByCountry = {
+    total_cases: number;
+    new_cases: number;
+    total_deaths: number;
+    new_deaths: number;
+    total_recovered: number;
+    active_cases: number;
+    serious_critical: number;
+    total_per_million: number;
+    deaths_per_million: number
+}
