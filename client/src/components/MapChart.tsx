@@ -44,7 +44,7 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
   // console.log("renders again")
   return (
     <>
-      <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
+      <ComposableMap data-tip="" projectionConfig={{ scale: 175 }}>
         <ZoomableGroup>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
@@ -56,13 +56,14 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}
+                  stroke="#EAEAEC"
                   style={{
                     default: {
-                      fill: "#D6D6DA",
+                      fill: "#FFFFFF",
                       outline: "none"
                     },
                     hover: {
-                      fill: "#F53",
+                      fill: "#52050A",
                       outline: "none"
                     },
                     pressed: {

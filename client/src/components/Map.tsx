@@ -5,6 +5,8 @@ import MapChart from "./MapChart";
 const Map = () => {
   const [content, setContent] = useState("");
 
+  // TODO: Deal with mobile responsiveness later.
+
   return (
     <div className="map">
       <MapChart setTooltipContent={setContent} />
