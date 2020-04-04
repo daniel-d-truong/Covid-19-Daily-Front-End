@@ -13,7 +13,6 @@ import {
 import { getAllData } from '../utilities/requests';
 import { CountryData, changeCountryName } from '../utilities/utils'
 
-
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
@@ -33,7 +32,7 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
       };
 
       const { NAME } = geo.properties;
-      console.log(NAME);
+      // console.log(NAME);
       const name = changeCountryName(NAME.toLowerCase());
       const countryData: Record<string, number> = data[name];
 
@@ -41,11 +40,15 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
       setTooltipContent(`${content}`);
   };
 
+  const createCard = (geo: any) => {
+      
+  };
+
   // console.log("renders again")
   return (
-    <>
+    <div className="react-map">
       <ComposableMap data-tip="" projectionConfig={{ scale: 175 }}>
-        <ZoomableGroup>
+        <ZoomableGroup center={[0,-10]}>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (
@@ -56,6 +59,7 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}
+                  onClick={() => createCard(geo)}
                   stroke="#EAEAEC"
                   style={{
                     default: {
@@ -77,7 +81,7 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-    </>
+    </div>
   );
 };
 

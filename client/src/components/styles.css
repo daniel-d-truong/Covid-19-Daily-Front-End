@@ -27,12 +27,21 @@ svg {
 .map {
     background-color: #EEEEEE;
     border-style: solid;
-    border-radius: 1px;
-    padding: 5px;
-    width: 80%;
+    /* border-radius: 1px; */
+    width: 90%;
     overflow: hidden;
     height: 60vh;
     vertical-align: text-top;
+    position: relative;
+    
+}
+
+.react-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .footer {

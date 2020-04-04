@@ -6,7 +6,9 @@ const countryNames: Record<string, string> = {
     "falkland is.": "falkland islands",
     "united kingdom": "uk",
     "n. cyprus": "cyprus",
-    "dominican rep.": "dominican republic"
+    "dominican rep.": "dominican republic",
+    "north korea": "n. korea",
+    "south korea": "s. korea"
 };
 
 export const changeCountryName = (country: string) => {
@@ -24,6 +26,7 @@ export const rounded = (num: number) => {
     }
 };
 
+// May need to update this in response to making stuff more dynamic
 export enum CountryData {
     TOTAL_CASES = "total_cases",
     NEW_CASES = "new_cases",
