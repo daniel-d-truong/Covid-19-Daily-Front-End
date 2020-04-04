@@ -3,29 +3,44 @@
  */
  
 
-import React, { memo } from "react";
+import React, { useEffect, memo } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
   Geographies,
   Geography
 } from "react-simple-maps";
+import { getAllData, CountryData } from '../utilities/requests';
+import { rounded, changeCountryName } from '../utilities/utils'
+
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-const rounded = (num: number) => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + "Bn";
-  } else if (num > 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-};
-
 const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<string>>} ) => {
   const setTooltipContent = obj["setTooltipContent"]
+  let data: string | string | any = {};
+  
+  useEffect(() => {    // eslint-disable-next-line
+    getAllData().then(fetchedData => {data = fetchedData});
+    console.log(data);
+  });
+
+  const setTooltip = (geo: any) => {
+      const formatData = (countryData: Record<string, number>) => {
+        if (!countryData) return "incorrect country name"
+        return `Total Cases: ${countryData[CountryData.TOTAL_CASES]}<br>New Cases Today: ${countryData[CountryData.NEW_CASES]}`;
+      };
+
+      const { NAME } = geo.properties;
+      const name = changeCountryName(NAME.toLowerCase());
+      const countryData: Record<string, number> = data[name];
+
+      let content = `<h2>${NAME}</h2><br>${data==={} ? "still loading..." : formatData(countryData)}`
+      setTooltipContent(`${content}`);
+  };
+
+  // console.log("renders again")
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
@@ -36,10 +51,7 @@ const MapChart = ( obj: {setTooltipContent: React.Dispatch<React.SetStateAction<
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  onMouseEnter={() => {
-                    const { NAME, POP_EST } = geo.properties;
-                    setTooltipContent(`${NAME} — ${rounded(POP_EST)}`);
-                  }}
+                  onMouseEnter={() => setTooltip(geo)}
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}

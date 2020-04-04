@@ -4,10 +4,11 @@ import MapChart from "./MapChart";
 
 const Map = () => {
   const [content, setContent] = useState("");
+
   return (
-    <div>
+    <div className="map">
       <MapChart setTooltipContent={setContent} />
-      <ReactTooltip>{content}</ReactTooltip>
+      <ReactTooltip html={true}>{content}</ReactTooltip>
     </div>
   );
 }
