@@ -16,9 +16,6 @@ const Map: React.FunctionComponent = () => {
 
   const opacityConfig = { stiffness: 30, damping: 14 };
   const scaleConfig = { stiffness: 30, damping: 14 };
-
-  console.log(worldData);
-
   // TODO: Deal with mobile responsiveness later.
 
   return (

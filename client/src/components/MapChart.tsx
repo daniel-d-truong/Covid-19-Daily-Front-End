@@ -41,12 +41,17 @@ const MapChart: React.FC<MapChartProps> = (props) => {
 
       let content = `<h2>${NAME}</h2><br>${data==={} ? "still loading..." : formatData(countryData)}`
       props.setTooltipContent(`${content}`);
+      // props.setCountry(NAME);
+  };
+
+  const clickCountry = (geo: any) => {
+      const { NAME } = geo.properties;
       props.setCountry(NAME);
   };
 
-  const createCard = (geo: any) => {
+  // const createCard = (geo: any) => {
       
-  };
+  // };
 
   // console.log("renders again")
   return (
@@ -63,7 +68,7 @@ const MapChart: React.FC<MapChartProps> = (props) => {
                   onMouseLeave={() => {
                     props.setTooltipContent("");
                   }}
-                  onClick={() => createCard(geo)}
+                  onClick={() => clickCountry(geo)}
                   stroke="#EAEAEC"
                   style={{
                     default: {
