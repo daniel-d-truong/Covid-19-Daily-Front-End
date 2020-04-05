@@ -29,6 +29,12 @@ svg {
     width: 80%;
 }
 
+.time {
+    font-size: 30px;
+    font-family: 'Courier New';
+    color: green;
+}
+
 .covid-info-section {
     text-align: center;
     width: 60%;
@@ -50,7 +56,7 @@ svg {
     /* border-radius: 1px; */
     width: 90%;
     overflow: hidden;
-    height: 60vh;
+    height: 80vh;
     vertical-align: text-top;
     position: relative;
     display: flex;

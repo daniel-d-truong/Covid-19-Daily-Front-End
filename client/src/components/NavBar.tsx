@@ -1,11 +1,13 @@
 import React from "react";
 import './styles.css';
+import DateComponent from "./Date";
 
 const NavBar = () => {
     return (
         <div className="navbar">
             <h1 className="title">Covid 19 Daily</h1>
             <p className="title">Get your daily dose of COVID-19 information and news.</p>
+            <DateComponent />
             {/* <div className="links-section">
                 <p>Home</p>
                 <p>About</p>
