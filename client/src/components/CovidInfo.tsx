@@ -3,9 +3,10 @@ import { CovidInfoProps } from '../constants/PropConstants';
 import { CountryData, commaSeparators } from '../utilities/utils';
 
 const CovidInfo: React.FC<CovidInfoProps> = (props) => {
-    const totalCases = props.countryData ? commaSeparators(props.countryData[CountryData.TOTAL_CASES]) : "no data";
-    const newCases = props.countryData ? commaSeparators(props.countryData[CountryData.NEW_CASES]) : "no data";
-    const newDeaths = props.countryData ? commaSeparators(props.countryData[CountryData.NEW_DEATHS]) : "no data";
+    const loadingData = "...loading data";
+    const totalCases = props.countryData ? commaSeparators(props.countryData[CountryData.TOTAL_CASES]) : loadingData;
+    const newCases = props.countryData ? commaSeparators(props.countryData[CountryData.NEW_CASES]) : loadingData;
+    const newDeaths = props.countryData ? commaSeparators(props.countryData[CountryData.NEW_DEATHS]) : loadingData;
 
     return (
         <div className="covid-info-section">

@@ -3,7 +3,7 @@
  */
  
 
-import React, { useEffect, memo } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -19,6 +19,7 @@ const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 let countrySelected = WORLD;
+let countryStatus = false;
 
 const MapChart: React.FC<MapChartProps> = (props) => {
   
@@ -57,46 +58,47 @@ const MapChart: React.FC<MapChartProps> = (props) => {
         props.setCountry(NAME);
         countrySelected = NAME;
       }
-      
   };
 
-  // const createCard = (geo: any) => {
-      
-  // };
+  const hideCard = () => {
+    // TODO: Do later. Hide the card when clicking anywhere on the map.
+  }
 
-  // console.log("renders again")
+  const color = '#FFFFFF';
+
   return (
     <div className="react-map">
-      <ComposableMap data-tip="" projectionConfig={{ scale: 175 }}>
+      <ComposableMap data-tip="" projectionConfig={{ scale: 175 }} onClick={hideCard}>
         <ZoomableGroup center={[0,-10]}>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
-              geographies.map(geo => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  onMouseEnter={() => setTooltip(geo)}
-                  onMouseLeave={() => {
-                    props.setTooltipContent("");
-                  }}
-                  onClick={() => clickCountry(geo)}
-                  stroke="#EAEAEC"
-                  style={{
-                    default: {
-                      fill: "#FFFFFF",
-                      outline: "none"
-                    },
-                    hover: {
-                      fill: "#52050A",
-                      outline: "none"
-                    },
-                    pressed: {
-                      fill: "#000000",
-                      outline: "none"
-                    }
-                  }}
-                />
-              ))
+              geographies.map(geo => {
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    onMouseEnter={() => setTooltip(geo)}
+                    onMouseLeave={() => {
+                      props.setTooltipContent("");
+                    }}
+                    onClick={() => clickCountry(geo)}
+                    stroke="#EAEAEC"
+                    style={{
+                      default: {
+                        fill: color,
+                        outline: "none"
+                      },
+                      hover: {
+                        fill: "#52050A",
+                        outline: "none"
+                      },
+                      pressed: {
+                        fill: "#000000",
+                        outline: "none"
+                      },
+                    }}
+                  />
+              )})
             }
           </Geographies>
         </ZoomableGroup>

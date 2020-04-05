@@ -6,7 +6,7 @@ export const getNewsArticles = async(query: string = "") => {
     try {
         const fetchedData = await axios.get(`${serverUrl}news`, query==="" ? {} : {
             params: {
-                q: query
+                c: query
             }
         });
         return fetchedData.data;
