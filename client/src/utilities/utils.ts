@@ -1,3 +1,5 @@
+import { WORLD } from '../constants/ValueConstants';
+
 const countryNames: Record<string, string> = {
     "united states of america": "usa",
     "dem. rep. congo": "drc",
@@ -8,7 +10,8 @@ const countryNames: Record<string, string> = {
     "n. cyprus": "cyprus",
     "dominican rep.": "dominican republic",
     "north korea": "n. korea",
-    "south korea": "s. korea"
+    "south korea": "s. korea",
+    WORLD: "total"    
 };
 
 export const changeCountryName = (country: string) => {
@@ -26,6 +29,12 @@ export const rounded = (num: number) => {
       return Math.round(num / 100) / 10 + "K";
     }
 };
+
+export const commaSeparators = (num: number) => {
+    let num_parts = num.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts.join(".");
+}
 
 // May need to update this in response to making stuff more dynamic
 export enum CountryData {

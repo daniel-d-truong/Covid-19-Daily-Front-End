@@ -14,8 +14,11 @@ const DataCard: React.FunctionComponent<DataCardProps> = (props) => {
         if (previousCountry !== props.countryName) {
             getNewsArticles(changeCountryName(props.countryName)).then((fetchedData) => {
                 // console.log(fetchedData);
-                setNewsUrls(fetchedData["urls"]);
-                console.log(newsUrls);
+                if (fetchedData["urls"]) {
+                    setNewsUrls(fetchedData["urls"]);
+                    console.log(newsUrls);
+                }
+                
             });
         }
         previousCountry = props.countryName;
@@ -24,7 +27,7 @@ const DataCard: React.FunctionComponent<DataCardProps> = (props) => {
     return (
         <div className="card" style={{...DataCardStyle, ...props.style}}>
             <h2>{props.countryName}</h2>
-            <p>{props.countryData}</p>
+            <p>{}</p>
             {
                 newsUrls.map((url) => 
                     <p>{url}</p>

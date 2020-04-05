@@ -9,10 +9,15 @@ svg {
 
 /* Navbar section */
 .navbar {
+    background-color: #EEEEEE;
     padding: 10px;
     margin-bottom: 15px;
     text-align: center;
     width: 100%;
+}
+
+.countryName {
+    font-size: 36px;
 }
 
 .links-section {
@@ -22,6 +27,21 @@ svg {
     justify-content: space-around;
     margin: 0 auto;
     width: 80%;
+}
+
+.covid-info-section {
+    text-align: center;
+    width: 60%;
+}
+
+.data-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.numValue {
+    font-size: 36px;
 }
 
 .map {

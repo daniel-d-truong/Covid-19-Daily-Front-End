@@ -13,9 +13,12 @@ import {
 import { MapChartProps } from '../constants/PropConstants'
 import { CountryData, changeCountryName } from '../utilities/utils'
 import { getAllData } from '../utilities/requests';
+import { WORLD } from "../constants/ValueConstants";
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+
+let countrySelected = WORLD;
 
 const MapChart: React.FC<MapChartProps> = (props) => {
   
@@ -45,8 +48,16 @@ const MapChart: React.FC<MapChartProps> = (props) => {
   };
 
   const clickCountry = (geo: any) => {
+      // Turn off country selection
       const { NAME } = geo.properties;
-      props.setCountry(NAME);
+      if (countrySelected === NAME) {
+        props.setCountry(WORLD);
+        countrySelected = WORLD;
+      } else {
+        props.setCountry(NAME);
+        countrySelected = NAME;
+      }
+      
   };
 
   // const createCard = (geo: any) => {
@@ -80,7 +91,7 @@ const MapChart: React.FC<MapChartProps> = (props) => {
                       outline: "none"
                     },
                     pressed: {
-                      fill: "#E42",
+                      fill: "#000000",
                       outline: "none"
                     }
                   }}

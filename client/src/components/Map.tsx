@@ -4,15 +4,16 @@ import { Motion, spring } from "react-motion";
 import MapChart from "./MapChart";
 import DataCard from './DataCard';
 import { DataCardValues } from '../constants/StyleConstants';
+import { WORLD } from '../constants/ValueConstants';
+import { MapProps } from '../constants/PropConstants';
 
 import "./styles.css";
+import { changeCountryName } from "../utilities/utils";
 
-const Map: React.FunctionComponent = () => {
+const Map: React.FunctionComponent<MapProps> = (props) => {
   // States
   const [content, setContent] = useState("");
   const [mapWidth, setMapWidth] = useState(.9*window.innerWidth);
-  const [worldData, setWorldData] = useState({} as string | string | any);
-  const [country, setCountry] = useState("World");
 
   const opacityConfig = { stiffness: 30, damping: 14 };
   const scaleConfig = { stiffness: 30, damping: 14 };
@@ -20,17 +21,20 @@ const Map: React.FunctionComponent = () => {
 
   return (
     <div className="map">
-      <MapChart setTooltipContent={setContent} setWorldData={setWorldData} setCountry={setCountry} />
+      <MapChart setTooltipContent={setContent} setWorldData={props.setWorldData} setCountry={props.setCountry} />
       <ReactTooltip html={true}>{content}</ReactTooltip>
 
-      <Motion defaultStyle={{x: mapWidth, opacity: 0}} style={{x: spring(mapWidth - DataCardValues.width, scaleConfig), opacity: spring(0.75, opacityConfig)}}>
+      <Motion defaultStyle={{x: mapWidth, opacity: 0}} style={{
+        x: spring(props.country !== WORLD ? mapWidth - DataCardValues.width : mapWidth, scaleConfig), 
+        opacity: spring(props.country !== WORLD ? 1 : 0, opacityConfig)
+      }}>
         {(style) => {
           const cardStyle: React.CSSProperties = {
             transform: `translateX(${style.x}px)`,
             opacity: style.opacity
           };
           return (
-            <DataCard style={cardStyle} countryName={country} countryData={worldData[country]}/>
+            <DataCard style={cardStyle} countryName={props.country} countryData={props.worldData[changeCountryName(props.country)]}/>
           )
         }}
         
