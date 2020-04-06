@@ -5,6 +5,7 @@ export interface CovidInfoProps {
 
 export interface DataCardProps {
     style: React.CSSProperties,
+    setCountry: React.Dispatch<React.SetStateAction<string>>,
     countryName: string, 
     countryData: Record<string, number>
 };

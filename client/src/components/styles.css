@@ -83,7 +83,7 @@ svg {
     /* border-style: solid; */
     padding: 8px;
     width: 250px;
-    height: 500px;
+    height: 400px;
     text-align: center;
     margin: 0 auto;
     vertical-align: middle;
@@ -100,6 +100,7 @@ svg {
 
 .news-card:hover {
     transform: translateX(1px) scale(1.02);
+    background-color: #EEEEEE;
 }
 
 .footer {

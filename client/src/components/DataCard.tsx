@@ -21,7 +21,7 @@ const DataCard: React.FunctionComponent<DataCardProps> = (props) => {
                 if (fetchedData["articles"]) {
                     setNewsArticles(fetchedData["articles"]);
                     // console.log(newsArticles);
-                    console.log(fetchedData);
+                    // console.log(fetchedData);
                 }
                 
             });

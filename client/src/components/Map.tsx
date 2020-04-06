@@ -38,7 +38,7 @@ const Map: React.FunctionComponent<MapProps> = (props) => {
             opacity: style.opacity
           };
           return (
-            <DataCard style={cardStyle} countryName={props.country} 
+            <DataCard style={cardStyle} countryName={props.country} setCountry={props.setCountry}
                       countryData={props.worldData[changeCountryName(props.country)]}/>
           )
         }}
