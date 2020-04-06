@@ -29,3 +29,8 @@ export interface NewsCardProps {
     href: string,
     pic: string
 };
+
+export interface TweetButtonProps {
+    data: string | string | any,
+    articles: string[]
+}
