@@ -21,3 +21,10 @@ export interface MapChartProps {
     setWorldData: React.Dispatch<React.SetStateAction<string | any | any>>,
     setCountry: React.Dispatch<React.SetStateAction<string>>,
 };
+
+export interface NewsCardProps {
+    desc: string,
+    title: string,
+    href: string,
+    pic: string
+};

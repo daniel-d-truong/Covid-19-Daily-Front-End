@@ -34,7 +34,25 @@ export const commaSeparators = (num: number) => {
     let num_parts = num.toString().split(".");
     num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return num_parts.join(".");
-}
+};
+
+export const getMapWidth = () => {
+    return 0.9*window.innerWidth;
+};
+
+export const goToNewPage = (link: string) => {
+    window.open(link);
+};
+
+export enum ArticleData {
+    AUTHOR = "author",
+    CONTENT = "content",
+    DESC = "description",
+    PUBLISHED_AT = "publishedAt",
+    TITLE = "title",
+    URL = "url",
+    URL_TO_IMAGE = "urlToImage"
+};
 
 // May need to update this in response to making stuff more dynamic
 export enum CountryData {

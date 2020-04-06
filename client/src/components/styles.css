@@ -72,6 +72,36 @@ svg {
     height: 100%;
 }
 
+.card-content {
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    width: 85%;
+    opacity: 0.8;
+}
+
+.news-card {
+    /* border-style: solid; */
+    padding: 8px;
+    width: 250px;
+    height: 500px;
+    text-align: center;
+    margin: 0 auto;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.news-card > h2 {
+    font-size: 15px;
+}
+
+.news-card > img {
+    max-width: 100%;
+}
+
+.news-card:hover {
+    transform: translateX(1px) scale(1.02);
+}
+
 .footer {
     background-color: #79ADDC;
     padding: 6px;

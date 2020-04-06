@@ -8,20 +8,24 @@ import { WORLD } from '../constants/ValueConstants';
 import { MapProps } from '../constants/PropConstants';
 
 import "./styles.css";
-import { changeCountryName } from "../utilities/utils";
+import { changeCountryName, getMapWidth } from "../utilities/utils";
 
 const Map: React.FunctionComponent<MapProps> = (props) => {
   // States
   const [content, setContent] = useState("");
-  const [mapWidth, setMapWidth] = useState(.9*window.innerWidth);
+  const [mapWidth, setMapWidth] = useState(getMapWidth());
 
   const opacityConfig = { stiffness: 30, damping: 14 };
-  const scaleConfig = { stiffness: 30, damping: 14 };
+  const scaleConfig = { stiffness: 100, damping: 14 };
   // TODO: Deal with mobile responsiveness later.
+  window.addEventListener('resize', () => {
+    setMapWidth(getMapWidth());
+  });
 
   return (
     <div className="map">
-      <MapChart setTooltipContent={setContent} setWorldData={props.setWorldData} setCountry={props.setCountry} />
+      <MapChart setTooltipContent={setContent} setWorldData={props.setWorldData} 
+                setCountry={props.setCountry} />
       <ReactTooltip html={true}>{content}</ReactTooltip>
 
       <Motion defaultStyle={{x: mapWidth, opacity: 0}} style={{
@@ -34,7 +38,8 @@ const Map: React.FunctionComponent<MapProps> = (props) => {
             opacity: style.opacity
           };
           return (
-            <DataCard style={cardStyle} countryName={props.country} countryData={props.worldData[changeCountryName(props.country)]}/>
+            <DataCard style={cardStyle} countryName={props.country} 
+                      countryData={props.worldData[changeCountryName(props.country)]}/>
           )
         }}
         

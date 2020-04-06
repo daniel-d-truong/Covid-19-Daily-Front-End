@@ -19,7 +19,7 @@ const DateComponent = () => {
     return (
         <div className="date-component">
             <p className="time">{date.toLocaleTimeString()} @ {date.toLocaleDateString()}</p>
-            <p>Day gets reset at <b>{getTimeDayResets()}</b>.</p>
+            <p>Day's stats gets reset at <b>{getTimeDayResets()}</b> at your local time zone.</p>
         </div>
     )
 };
