@@ -46,6 +46,12 @@ svg {
     justify-content: space-between;
 }
 
+@media screen and (max-width: 600px) {
+    .data-section {
+        flex-direction: column;
+    }
+}
+
 .numValue {
     font-size: 36px;
 }
