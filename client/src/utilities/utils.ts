@@ -44,6 +44,12 @@ export const goToNewPage = (link: string) => {
     window.open(link);
 };
 
+export const goToPageWithParams = (link: string, params: Record<string, string>) => {
+    goToNewPage(link+Object.keys(params).map((key) => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
+    }).join('&'));
+};
+
 export enum ArticleData {
     AUTHOR = "author",
     CONTENT = "content",
@@ -77,4 +83,4 @@ export type CovidDataByCountry = {
     serious_critical: number;
     total_per_million: number;
     deaths_per_million: number
-}
+};

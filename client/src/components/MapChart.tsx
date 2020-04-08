@@ -19,7 +19,6 @@ const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 let countrySelected = WORLD;
-let countryStatus = false;
 
 const MapChart: React.FC<MapChartProps> = (props) => {
   
@@ -90,7 +89,8 @@ const MapChart: React.FC<MapChartProps> = (props) => {
                       },
                       hover: {
                         fill: "#52050A",
-                        outline: "none"
+                        outline: "none",
+                        cursor: "pointer"
                       },
                       pressed: {
                         fill: "#000000",

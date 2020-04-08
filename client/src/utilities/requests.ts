@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { changeCountryName } from './utils';
 
 const serverUrl = "http://127.0.0.1:5000/";
 
@@ -6,7 +7,7 @@ export const getNewsArticles = async(query: string = "") => {
     try {
         const fetchedData = await axios.get(`${serverUrl}news`, query==="" ? {} : {
             params: {
-                c: query
+                c: changeCountryName(query)
             }
         });
         return fetchedData.data;

@@ -7,7 +7,9 @@ export interface DataCardProps {
     style: React.CSSProperties,
     setCountry: React.Dispatch<React.SetStateAction<string>>,
     countryName: string, 
-    countryData: Record<string, number>
+    countryData: Record<string, number>,
+    newsArticles: Array<Record<string, string>>,
+    setNewsArticles: React.Dispatch<React.SetStateAction<Array<Record<string, string>>>>
 };
 
 export interface MapProps {
@@ -15,7 +17,9 @@ export interface MapProps {
     setCountry: React.Dispatch<React.SetStateAction<string>>,
     worldData: string | string | any,
     setWorldData: React.Dispatch<React.SetStateAction<string | any | any>>,
-}
+    newsArticles: Array<Record<string, string>>
+    setNewsArticles: React.Dispatch<React.SetStateAction<Array<Record<string, string>>>>
+};
 
 export interface MapChartProps {
     setTooltipContent: React.Dispatch<React.SetStateAction<string>>,
@@ -32,5 +36,5 @@ export interface NewsCardProps {
 
 export interface TweetButtonProps {
     data: string | string | any,
-    articles: string[]
+    newsArticles: Array<Record<string, string>>
 }

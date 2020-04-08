@@ -10,7 +10,6 @@ let previousCountry: string = "";
 
 const DataCard: React.FunctionComponent<DataCardProps> = (props) => {
 
-    const [newsArticles, setNewsArticles] = useState([] as Array<Record<string, string>>);
     const [activeItemIndex, setActiveItemIndex] = useState(0);
     const chevronWidth = 40;
 
@@ -19,9 +18,7 @@ const DataCard: React.FunctionComponent<DataCardProps> = (props) => {
             getNewsArticles(changeCountryName(props.countryName)).then((fetchedData) => {
                 // console.log(fetchedData);
                 if (fetchedData["articles"]) {
-                    setNewsArticles(fetchedData["articles"]);
-                    // console.log(newsArticles);
-                    // console.log(fetchedData);
+                    props.setNewsArticles(fetchedData["articles"]);
                 }
                 
             });
@@ -44,7 +41,7 @@ const DataCard: React.FunctionComponent<DataCardProps> = (props) => {
                     outsideChevron
                     chevronWidth={chevronWidth}>
                     {
-                        newsArticles.map((article) => 
+                        props.newsArticles.map((article) => 
                             <NewsCard title={article[ArticleData.TITLE]} desc={article[ArticleData.DESC]} href={article[ArticleData.URL]} pic={article[ArticleData.URL_TO_IMAGE]} />
                         )
                     }

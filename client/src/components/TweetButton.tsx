@@ -8,3 +8,5 @@ const TweetButton: React.FC<TweetButtonProps> = () => {
         </div>
     )
 };
+
+export default TweetButton;

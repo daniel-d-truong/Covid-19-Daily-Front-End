@@ -39,7 +39,8 @@ const Map: React.FunctionComponent<MapProps> = (props) => {
           };
           return (
             <DataCard style={cardStyle} countryName={props.country} setCountry={props.setCountry}
-                      countryData={props.worldData[changeCountryName(props.country)]}/>
+                      countryData={props.worldData[changeCountryName(props.country)]}
+                      newsArticles={props.newsArticles} setNewsArticles={props.setNewsArticles}/>
           )
         }}
         
