@@ -61,8 +61,7 @@ const MapChart: React.FC<MapChartProps> = (props) => {
 
   const hideCard = () => {
     // TODO: Do later. Hide the card when clicking anywhere on the map.
-  }
-
+  };
   const color = "#FFFFFF";
 
   return (

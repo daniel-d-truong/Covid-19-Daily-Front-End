@@ -23,7 +23,9 @@ const App = () => {
            newsArticles={newsArticles} setNewsArticles={setNewsArticles}     
       />
       <TweetButton 
-        data={worldData[changeCountryName(country)]} newsArticles={newsArticles}
+        data={worldData[changeCountryName(country)]} 
+        newsArticles={newsArticles}
+        country={country}
       />
       <Footer />
     </div>

@@ -62,7 +62,7 @@ svg {
     /* border-radius: 1px; */
     width: 90%;
     overflow: hidden;
-    height: 80vh;
+    height: 60vh;
     vertical-align: text-top;
     position: relative;
     display: flex;
@@ -89,7 +89,7 @@ svg {
     /* border-style: solid; */
     padding: 8px;
     width: 250px;
-    height: 500px;
+    height: 90%;
     text-align: center;
     margin: 0 auto;
     vertical-align: middle;
@@ -107,6 +107,34 @@ svg {
 .news-card:hover {
     transform: translateX(1px) scale(1.02);
     background-color: #EEEEEE;
+}
+
+.button {
+    margin: 10px;
+    background-color: #53d1f3;
+    text-align: center;
+    border-radius: 30px;
+    height: 50px;
+    width: 300px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0066CC;
+    transform: translateY("1px");
+}
+
+.tweet-section {
+    /* align-content: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.textbox {
+    /* margin-bottom: 50px; */
+    font-size: 18px;
 }
 
 .footer {

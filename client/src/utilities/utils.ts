@@ -30,6 +30,21 @@ export const rounded = (num: number) => {
     }
 };
 
+export const createTweet = (country: string, data: Record<string, any>, newsArticles: Array<Record<string, any>>): string => {
+    if (data == null || newsArticles.length == 0) { return '' };
+    const date: string = new Date().toLocaleDateString();
+    return `Coronavirus has greatly affected our world. As of ${date} in ${country}, the data shows
+       
+        Total Cases: ${data[CountryData.TOTAL_CASES]}
+        Total Per Million: ${data[CountryData.TOTAL_PER_MIL]}
+        Total Deaths: ${data[CountryData.TOTAL_DEATHS]}
+
+Furthermore, this article (${newsArticles[1][ArticleData.URL]}) shows ... [YOUR WORDS].
+
+Spread the word about the current news, as covid continues to affect our lives. #coviddaily
+     `;
+}
+
 export const commaSeparators = (num: number) => {
     let num_parts = num.toString().split(".");
     num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");

@@ -35,6 +35,13 @@ export interface NewsCardProps {
 };
 
 export interface TweetButtonProps {
+    country: string,
     data: string | string | any,
     newsArticles: Array<Record<string, string>>
-}
+};
+
+export interface TextBoxProps {
+    dynamicData: Record<string, string>,
+    formattedString: string
+    setFormattedString: Function
+};
