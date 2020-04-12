@@ -10,12 +10,19 @@ const TweetButton: React.FC<TweetButtonProps> = (props) => {
     const scaleFactor = "6%";
 
     const [formattedString, setFormattedString] = useState("");
+    // console.log(props);
+    // console.log(formattedString);
 
     if (formattedString == "") {
         const text = createTweet(props.country, props.data, props.newsArticles);
         if (text !== "") {
-            setFormattedString(text);
+            setFormattedString(createTweet(props.country, props.data, props.newsArticles));
         }
+    }
+
+    const newTweet = createTweet(props.country, props.data, props.newsArticles);
+    if (newTweet != formattedString) {
+        setFormattedString(newTweet);
     }
 
     let textString = formattedString;
