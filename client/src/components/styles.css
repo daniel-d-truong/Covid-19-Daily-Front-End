@@ -80,16 +80,18 @@ svg {
 
 .card-content {
     background-color: #FFFFFF;
-    margin: 0 auto;
+    margin-left: 20px;
     width: 85%;
     opacity: 0.8;
+    max-height: 75%;
+    overflow-x: hidden;
 }
 
 .news-card {
     /* border-style: solid; */
     padding: 8px;
     width: 250px;
-    height: 90%;
+    max-height: 60%;
     text-align: center;
     margin: 0 auto;
     vertical-align: middle;
@@ -101,7 +103,7 @@ svg {
 }
 
 .news-card > img {
-    max-width: 100%;
+    max-width: 60%;
 }
 
 .news-card:hover {

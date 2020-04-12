@@ -38,7 +38,7 @@ const DataCard: React.FunctionComponent<DataCardProps> = (props) => {
                     gutter={10}
                     leftChevron={<button>{'<'}</button>}
                     rightChevron={<button>{'>'}</button>}
-                    outsideChevron
+                    outsideChevron={false}
                     chevronWidth={chevronWidth}>
                     {
                         props.newsArticles.map((article) => 

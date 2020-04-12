@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { changeCountryName } from './utils';
 
-const serverUrl = "http://127.0.0.1:5000/";
+const serverUrl = "https://covid-19-daily.herokuapp.com/";
 
 export const getNewsArticles = async(query: string = "") => {
     try {
