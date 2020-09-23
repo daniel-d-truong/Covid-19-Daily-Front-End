@@ -10,10 +10,8 @@ const TweetButton: React.FC<TweetButtonProps> = (props) => {
     const scaleFactor = "6%";
 
     const [formattedString, setFormattedString] = useState("");
-    // console.log(props);
-    // console.log(formattedString);
 
-    if (formattedString == "") {
+    if (formattedString === "") {
         const text = createTweet(props.country, props.data, props.newsArticles);
         if (text !== "") {
             setFormattedString(createTweet(props.country, props.data, props.newsArticles));
@@ -21,7 +19,7 @@ const TweetButton: React.FC<TweetButtonProps> = (props) => {
     }
 
     const newTweet = createTweet(props.country, props.data, props.newsArticles);
-    if (newTweet != formattedString) {
+    if (newTweet !== formattedString) {
         setFormattedString(newTweet);
     }
 
@@ -43,7 +41,7 @@ const TweetButton: React.FC<TweetButtonProps> = (props) => {
                     width: scaleFactor, 
                     height: scaleFactor,
                     margin: "0 auto"
-                }}/></p>            
+                }} alt="twitter icon"/></p>            
             </div>
             <p>*We will not make a tweet without your permission.*</p>
             <TextBox dynamicData={{}} formattedString={textString} 

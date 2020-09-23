@@ -14,6 +14,8 @@ const Map: React.FunctionComponent<MapProps> = (props) => {
   // States
   const [content, setContent] = useState("");
   const [mapWidth, setMapWidth] = useState(getMapWidth());
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cardHidden, setCardHidden] = useState(props.country !== WORLD);
 
   const opacityConfig = { stiffness: 30, damping: 14 };
   const scaleConfig = { stiffness: 100, damping: 14 };

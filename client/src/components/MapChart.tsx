@@ -3,7 +3,7 @@
  */
  
 
-import React, { useEffect, useRef, memo } from "react";
+import React, { useEffect, memo } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -27,6 +27,7 @@ const MapChart: React.FC<MapChartProps> = (props) => {
   useEffect(() => {    // eslint-disable-next-line
     getAllData().then(fetchedData => { 
       props.setWorldData(fetchedData);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       data = fetchedData;
     });
   });

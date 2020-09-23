@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DataCardProps } from '../constants/PropConstants';
 import { DataCardStyle } from '../constants/StyleConstants';
 import { getNewsArticles } from '../utilities/requests';

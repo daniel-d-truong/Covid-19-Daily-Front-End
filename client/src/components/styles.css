@@ -13,7 +13,12 @@ svg {
     padding: 10px;
     margin-bottom: 15px;
     text-align: center;
-    width: 100%;
+    width: 200%;
+}
+
+.navbar > img {
+    width: 35px;
+    height: 35px;
 }
 
 .countryName {

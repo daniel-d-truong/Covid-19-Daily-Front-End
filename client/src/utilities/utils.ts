@@ -1,5 +1,3 @@
-import { WORLD } from '../constants/ValueConstants';
-
 const countryNames: Record<string, string> = {
     "united states of america": "usa",
     "dem. rep. congo": "drc",
@@ -12,57 +10,6 @@ const countryNames: Record<string, string> = {
     "north korea": "n. korea",
     "south korea": "s. korea",
     WORLD: "total"    
-};
-
-export const changeCountryName = (country: string) => {
-    country = country.toLowerCase();
-    return country in countryNames ? countryNames[country] : country;
-};
-
-export const rounded = (num: number) => {
-    console.log(num);
-    if (num > 1000000000) {
-      return Math.round(num / 100000000) / 10 + "Bn";
-    } else if (num > 1000000) {
-      return Math.round(num / 100000) / 10 + "M";
-    } else {
-      return Math.round(num / 100) / 10 + "K";
-    }
-};
-
-export const createTweet = (country: string, data: Record<string, any>, newsArticles: Array<Record<string, any>>): string => {
-    if (data == null || newsArticles.length == 0) { return '' };
-    const date: string = new Date().toLocaleDateString();
-    return `Coronavirus has greatly affected our world. As of ${date} in ${country}, the data shows
-       
-        Total Cases: ${data[CountryData.TOTAL_CASES]}
-        Total Per Million: ${data[CountryData.TOTAL_PER_MIL]}
-        Total Deaths: ${data[CountryData.TOTAL_DEATHS]}
-
-Furthermore, this article (${newsArticles[1][ArticleData.URL]}) shows ... [YOUR WORDS].
-
-Spread the word about the current news, as covid continues to affect our lives. #coviddaily
-     `;
-}
-
-export const commaSeparators = (num: number) => {
-    let num_parts = num.toString().split(".");
-    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return num_parts.join(".");
-};
-
-export const getMapWidth = () => {
-    return 0.9*window.innerWidth;
-};
-
-export const goToNewPage = (link: string) => {
-    window.open(link);
-};
-
-export const goToPageWithParams = (link: string, params: Record<string, string>) => {
-    goToNewPage(link+Object.keys(params).map((key) => {
-        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
-    }).join('&'));
 };
 
 export enum ArticleData {
@@ -98,4 +45,56 @@ export type CovidDataByCountry = {
     serious_critical: number;
     total_per_million: number;
     deaths_per_million: number
+};
+
+export const changeCountryName = (country: string) => {
+    country = country.toLowerCase();
+    return country in countryNames ? countryNames[country] : country;
+};
+
+export const rounded = (num: number) => {
+    console.log(num);
+    if (num > 1000000000) {
+      return Math.round(num / 100000000) / 10 + "Bn";
+    } else if (num > 1000000) {
+      return Math.round(num / 100000) / 10 + "M";
+    } else {
+      return Math.round(num / 100) / 10 + "K";
+    }
+};
+
+export const createTweet = (country: string, data: Record<string, any>, newsArticles: Array<Record<string, any>>): string => {
+    if (data == null || newsArticles.length === 0) { return '' };
+    const date: string = new Date().toLocaleDateString();
+    return `Coronavirus has greatly affected our world. As of ${date} in ${country}, the data shows
+       
+        Total Cases: ${data[CountryData.TOTAL_CASES]}
+        Total Per Million: ${data[CountryData.TOTAL_PER_MIL]}
+        Total Deaths: ${data[CountryData.TOTAL_DEATHS]}
+
+Furthermore, this article (${newsArticles[1][ArticleData.URL]}) shows ... [YOUR WORDS].
+
+Spread the word about the current news, as covid continues to affect our lives. #coviddaily
+     `;
+}
+
+export const commaSeparators = (num: number) => {
+    if (!num) { return 0; }
+    let num_parts = num.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts.join(".");
+};
+
+export const getMapWidth = () => {
+    return 0.9*window.innerWidth;
+};
+
+export const goToNewPage = (link: string) => {
+    window.open(link);
+};
+
+export const goToPageWithParams = (link: string, params: Record<string, string>) => {
+    goToNewPage(link+Object.keys(params).map((key) => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
+    }).join('&'));
 };
